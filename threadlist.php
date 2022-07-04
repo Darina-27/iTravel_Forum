@@ -126,18 +126,19 @@
             $sql2="SELECT user_email FROM `users` WHERE sno='$thread_user_id'";
             $result2=mysqli_query($conn,$sql2);
             $row2 = mysqli_fetch_assoc($result2);
-            
+            $variable= $row2['user_email'];
+            $userN = substr($variable, 0, strpos($variable, "@"));
 
             echo '
             <div class="container threadlist">
 
             <div class="row justify-content-center my-3">
-            <div class="col-5 border border-secondary p-2">
+            <div class="col-6 border border-secondary p-2">
             <h5><a href="thread.php?threadid='.$id.'">'.$title.'</a></h5>
             '.$desc.'
             </div>
-            <div class="col-3 border border-secondary p-2">
-            <div class="d-flex align-self-center">            <p class="fw-bold">Asked by: '  .$row2['user_email'].'  </p>
+            <div class="col-2 border border-secondary p-2">
+            <div class="d-flex align-self-center">            <p class="fw-bold">Asked by: '  .$userN.'  </p>
             </div>
 
                 
